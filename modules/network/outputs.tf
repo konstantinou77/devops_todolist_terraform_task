@@ -17,4 +17,3 @@ output "public_ip_id" {
 output "full_domain_name" {
   value = azurerm_public_ip.main.fqdn
 }
-

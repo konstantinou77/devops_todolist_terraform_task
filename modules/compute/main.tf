@@ -1,11 +1,11 @@
-data "azurerm_resource_group" "main" {
-  name = var.resource_group_name
-}
+# data "azurerm_resource_group" "main" {
+#   name = var.resource_group_name
+# }
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.azurerm_virtual_machine}-nic"
-  location            = data.azurerm_resource_group.main.location
-  resource_group_name = data.azurerm_resource_group.main.name
+  resource_group_name = var.resource_group_name
+  location            = var.location
 
   ip_configuration {
     name                          = "internal"
@@ -17,15 +17,15 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_ssh_public_key" "linuxboxsshkey" {
   name                = var.ssh_name
-  resource_group_name = data.azurerm_resource_group.main.name
-  location            = data.azurerm_resource_group.main.location
+  resource_group_name = var.resource_group_name
+  location            = var.location
   public_key          = var.ssh_key_public
 }
 
 resource "azurerm_linux_virtual_machine" "main"{
   name                  = var.azurerm_virtual_machine
-  location              = data.azurerm_resource_group.main.location
-  resource_group_name   = data.azurerm_resource_group.main.name
+  resource_group_name = var.resource_group_name
+  location            = var.location
   network_interface_ids = [azurerm_network_interface.main.id]
   size = var.azurerm_virtual_machine_size
   admin_username = var.username
@@ -60,7 +60,9 @@ resource "azurerm_virtual_machine_extension" "main" {
   type_handler_version = "2.1"
 
   protected_settings = jsonencode({
-    "fileUris" = ["https://raw.githubusercontent.com/konstantinou77/devops_todolist_terraform_task/install-app.sh"],
+    "fileUris" = [
+      "https://raw.githubusercontent.com/konstantinou77/devops_todolist_terraform_task/main/install-app.sh"
+    ],
     "commandToExecute": "bash install-app.sh"
   })
 }
