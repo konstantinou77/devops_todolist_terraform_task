@@ -52,9 +52,9 @@ variable "ssh_name" {
 }
 
 variable "azurerm_virtual_machine_extension" {
-  type = string
+  type        = string
   description = "The name of azurerm_virtual_machine_extension"
-  default = "install-app-script"
+  default     = "install-app-script"
 }
 
 variable "subnet_id" {
