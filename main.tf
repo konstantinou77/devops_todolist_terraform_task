@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "main" {
 
 
 module "compute" {
-  source = "./modules/compute"
+  source                       = "./modules/compute"
   location                     = azurerm_resource_group.main.location
   resource_group_name          = azurerm_resource_group.main.name
   subnet_id                    = module.network.subnet_id
@@ -30,7 +30,7 @@ module "compute" {
 }
 
 module "network" {
-  source = "./modules/network"
+  source                         = "./modules/network"
   location                       = azurerm_resource_group.main.location
   resource_group_name            = azurerm_resource_group.main.name
   azurerm_virtual_network        = var.azurerm_virtual_network
@@ -42,7 +42,7 @@ module "network" {
 }
 
 module "storage" {
-  source = "./modules/storage"
+  source              = "./modules/storage"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 }
