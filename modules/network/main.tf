@@ -1,7 +1,3 @@
-# data "azurerm_resource_group" "main" {
-#   name = var.resource_group_name
-# }
-
 resource "azurerm_virtual_network" "main" {
   name                = var.azurerm_virtual_network
   address_space       = [var.vnet_address_prefix]

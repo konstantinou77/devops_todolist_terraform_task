@@ -1,7 +1,3 @@
-# data "azurerm_resource_group" "main" {
-#   name = var.resource_group_name
-# }
-
 resource "azurerm_network_interface" "main" {
   name                = "${var.azurerm_virtual_machine}-nic"
   resource_group_name = var.resource_group_name
