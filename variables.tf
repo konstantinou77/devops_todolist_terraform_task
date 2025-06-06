@@ -58,13 +58,13 @@ variable "dns_label" {
   description = "The name of dns_label"
   default     = "matetask"
 }
-variable "subnet_id" {
-  description = "ID of the subnet to attach NIC"
-  type        = string
-}
+# variable "subnet_id" {
+#   description = "ID of the subnet to attach NIC"
+#   type        = string
+# }
 
-variable "public_ip_id" {
-  description = "The Id of the public IP to attach NIC"
-  type        = string
-}
+# variable "public_ip_id" {
+#   description = "The Id of the public IP to attach NIC"
+#   type        = string
+# }
 
