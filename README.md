@@ -19,7 +19,7 @@ state backend to store and manage Terraform state securely.
 - Custom Script Extension – Used for provisioning a ToDo List app on the VM
 
 # Project Structure:
-
+```
 /
 ├─ modules/
 │  ├─ network/     # Manages VNet, subnet, NSG, and public IP
@@ -30,7 +30,7 @@ state backend to store and manage Terraform state securely.
 ├─ outputs.tf
 ├─ terraform.tfvars
 └─ backend.tf      # Remote state backend configuration
-
+```
 # What Was Done:
 
 - Project Structure and Modules:
